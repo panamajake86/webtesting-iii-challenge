@@ -9,9 +9,17 @@ import { italic } from "ansi-colors";
 import expectExport from "expect";
 
 test('defaults to unlocked and open', () => {
-    const wrapper = rtl.render(<Dashboard />)
+    const wrapper = rtl.render(<Dashboard />);
     const locked = wrapper.getByTestId(/locked/i);
     const closed = wrapper.getByTestId(/closed/i);
-    expect(locked).toBeEnabled();
-    expect(closed).toBeEnabled();
+    expect(locked).toBeTruthy();
+    expect(closed).toBeTruthy();
+});
+
+test ('shows the controls and display', () => {
+    const wrapper = rtl.render(<Dashboard />);
+    const controls = wrapper.Controls;
+    const display = wrapper.Display;
+    expect(controls).toBeVisible();
+    expect(display).toBeVisible();
 });
